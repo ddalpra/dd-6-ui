@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <title>JSF Bootable Jar example</title>
+    <h:outputStylesheet library="css" name="styles.css"/>
+</h:head>
+<h:body>
+    <div class="main">
+    	<h:panelGroup id="outputGroup" layout="block">
+            <h:dataTable id="userTable" value="#{userBean.userList}" var="row" title="User List" styleClass="results">
+                <h:column>
+                    <f:facet name="header">ID</f:facet>
+                    #{row.id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">FirstName</f:facet>
+                    #{row.firstName}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">LastName</f:facet>
+                    #{row.lastName}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Dob</f:facet>
+                    #{row.dob}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Email</f:facet>
+                    #{row.email}
+                </h:column>
+            </h:dataTable>
+
+            <h:messages id="messages"/>
+        </h:panelGroup>
+    </div>
+</h:body>
+</html>

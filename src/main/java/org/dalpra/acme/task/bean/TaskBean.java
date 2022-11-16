@@ -17,7 +17,8 @@ import jakarta.inject.Named;
 @ViewScoped
 public class TaskBean implements Serializable {
 
-    private List<Task> allTasks;
+	private static final long serialVersionUID = -4864796116374164457L;
+	private List<Task> allTasks;
 
     @Inject
     private TaskController controller;

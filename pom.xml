@@ -65,7 +65,7 @@
 				<configuration>
 					<feature-pack-location>wildfly@maven(org.jboss.universe:community-universe)#${version.server.bom}</feature-pack-location>
 					<layers>
-						<layer>jaxrs-server</layer>
+						
 						<layer>management</layer>
 						<layer>microprofile-platform</layer>
 						<layer>jsf</layer>
