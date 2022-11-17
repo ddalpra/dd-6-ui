@@ -1,24 +1,85 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html
-        xmlns:faces="jakarta.faces"
-        xmlns:ui="jakarta.faces.facelets"
-        xmlns:f="jakarta.faces.core"
-        xmlns:h="jakarta.faces.html"
-        xmlns:pt="jakarta.faces.passthrough"
-        xmlns:cc="jakarta.faces.composite"
-        xmlns:my="jakarta.faces.component"
-        xmlns:c="jakarta.tags.core"
-        xmlns:fn="jakarta.tags.functions"
->
+<html xmlns:faces="jakarta.faces" xmlns:ui="jakarta.faces.facelets"
+	xmlns:f="jakarta.faces.core" xmlns:h="jakarta.faces.html"
+	xmlns:pt="jakarta.faces.passthrough" xmlns:cc="jakarta.faces.composite"
+	xmlns:my="jakarta.faces.component" xmlns:c="jakarta.tags.core"
+	xmlns:fn="jakarta.tags.functions">
+<h:head>
+
+	<style>
+* {
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the top navigation bar */
+.topnav {
+	overflow: hidden;
+	background-color: #333;
+}
+
+/* Style the topnav links */
+.topnav a {
+	float: left;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+	background-color: #ddd;
+	color: black;
+}
+
+/* Style the content */
+.content {
+	background-color: #ddd;
+	padding: 10px;
+	height: 200px; /* Should be removed. Only for demonstration */
+}
+
+/* Style the footer */
+.footer {
+	background-color: #f1f1f1;
+	padding: 10px;
+}
+</style>
+	<title>JSF Basic demo</title>
+</h:head>
 <h:body>
-    <h2>JSF Basic demo</h2>
-    <h:form id="formpanel" enctype="multipart/form-data">
-        <h:panelGrid columns="2" styleClass="default">
-            <h:inputFile  id="inputfile"   value="#{uploadBean.part}" accept="image/jpeg,image/png,image/gif" />
-            <h:commandButton value="Upload"
-                             action="#{uploadBean.uploadFile}"/>
-        </h:panelGrid>
-    </h:form>
+
+	<div class="topnav">
+		<a href="#">Link</a> <a href="#">Link</a> <a href="#">Link</a>
+	</div>
+
+	<div class="content">
+		<h:form id="formpanel" enctype="multipart/form-data">
+			<h:panelGrid columns="2" styleClass="default">
+				<h:inputFile id="inputfile" value="#{uploadBean.part}"
+					accept="image/jpeg,image/png,image/gif" />
+				<h:commandButton value="Upload" action="#{uploadBean.uploadFile}" />
+			</h:panelGrid>
+			<h:panelGrid columns="2" styleClass="default">
+				<h3>Read-Only input text box</h3>
+				<h:inputText value="#{uploadBean.nome}" />
+				<br />
+				<h:commandButton value="Hello" action="#{uploadBean.salvaNome}" />
+			</h:panelGrid>
+		</h:form>
+	</div>
+
+	<div class="footer">
+		<p>Footer</p>
+	</div>
+
 </h:body>
 </html>

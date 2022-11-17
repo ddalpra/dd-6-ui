@@ -9,7 +9,15 @@ import java.io.*;
 @Model
 public class UploadBean   {
     private Part part;
-    public Part getPart() {
+    private String nome;
+    
+    public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public Part getPart() {
         return part;
     }
     public void setPart(Part part) {
@@ -61,4 +69,12 @@ public class UploadBean   {
         }
         return null;
     }
+    
+    public String salvaNome() {
+		if(nome == null || nome.equals("")){
+			return "esempio.xhtml";
+		}else{
+			return "helloworld.xhtml";
+		}
+	}
 }
