@@ -72,7 +72,7 @@ public class UploadBean   {
     
     public String salvaNome() {
 		if(nome == null || nome.equals("")){
-			return "esempio.xhtml";
+			return "esempio.xhtml" ;
 		}else{
 			return "helloworld.xhtml";
 		}
