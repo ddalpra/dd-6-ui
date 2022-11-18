@@ -14,6 +14,9 @@
 		<version.bootable.jar>2.0.0.Final</version.bootable.jar>
 		<version.wildfly>27.0.0.Final</version.wildfly>
 		<version.wildfly-bootable-jar>8.1.0.Final</version.wildfly-bootable-jar>
+		<version.jakarta-api>10.0.0</version.jakarta-api>
+		<version.jakarta-bind-api>4.0.0</version.jakarta-bind-api>
+		<version.resteasy>6.2.1.Final</version.resteasy>
 		<plugin.fork.embedded>true</plugin.fork.embedded>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
@@ -27,7 +30,7 @@
 			<dependency>
 				<groupId>jakarta.platform</groupId>
 				<artifactId>jakarta.jakartaee-api</artifactId>
-				<version>10.0.0</version>
+				<version>${version.jakarta-api}</version>
 				<scope>provided</scope>
 			</dependency>
 		</dependencies>
@@ -41,12 +44,12 @@
 		<dependency>
 			<groupId>jakarta.xml.bind</groupId>
 			<artifactId>jakarta.xml.bind-api</artifactId>
-			<version>4.0.0</version>
+			<version>${version.jakarta-bind-api}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-client</artifactId>
-			<version>6.2.1.Final</version>
+			<version>${version.resteasy}</version>
 		</dependency>
 	</dependencies>
 

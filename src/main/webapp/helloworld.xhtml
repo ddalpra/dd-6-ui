@@ -1,20 +1,27 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html
-        xmlns:faces="jakarta.faces"
-        xmlns:ui="jakarta.faces.facelets"
-        xmlns:f="jakarta.faces.core"
-        xmlns:h="jakarta.faces.html"
-        xmlns:pt="jakarta.faces.passthrough"
-        xmlns:cc="jakarta.faces.composite"
-        xmlns:my="jakarta.faces.component"
-        xmlns:c="jakarta.tags.core"
-        xmlns:fn="jakarta.tags.functions"
->
-<h:body>
-    <h2>JSF Basic demo</h2>
-    <h:body> 
-    	 <h3>Hello <h:outputText value="#{uploadBean.nome}"/></h3> 
-    </h:body>
-</h:body>
-</html>
+<ui:composition
+        xmlns:faces="jakarta.faces" xmlns:ui="jakarta.faces.facelets"
+	xmlns:f="jakarta.faces.core" xmlns:h="jakarta.faces.html"
+	xmlns:pt="jakarta.faces.passthrough" xmlns:cc="jakarta.faces.composite"
+	xmlns:my="jakarta.faces.component" xmlns:c="jakarta.tags.core"
+	xmlns:fn="jakarta.tags.functions"
+	template="/WEB-INF/jsf-templates/layout.xhtml">
+
+    <ui:param name="title" value="Esempio"/>
+
+   <ui:define name="content">
+		<ul class="breadcrumb">
+			<li><a href="#">Home</a></li>
+			<li><a href="#">Pictures</a></li>
+			<li><a href="#">Summer 15</a></li>
+			<li>Spain</li>
+		</ul>
+
+
+		<h3>Hello <h:outputText value="#{uploadBean.nome}"/></h3> 
+
+	</ui:define>
+
+
+</ui:composition> 
