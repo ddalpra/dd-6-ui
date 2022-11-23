@@ -35,50 +35,49 @@
 					<h:outputText value="#{user.dob}" />
 				</p:column>
 				<p:column>
-					<p:commandButton icon="pi pi-pencil" update=":dialogs:manage-user-content"
-                    oncomplete="PF('manageUserDialog').show()"
-                    styleClass="edit-button rounded-button ui-button-success" process="@this">
-                    <f:setPropertyActionListener value="#{user}" target="#{userBean.selectedUser}" />
-                    <p:resetInput target=":dialogs:manage-user-content" />
-                </p:commandButton>
+					<p:commandButton icon="pi pi-pencil"
+						update=":dialogs:manage-user-content"
+						oncomplete="PF('manageUserDialog').show()"
+						styleClass="edit-button rounded-button ui-button-success"
+						process="@this">
+						<f:setPropertyActionListener value="#{user}"
+							target="#{userBean.selectedUser}" />
+						<p:resetInput target=":dialogs:manage-user-content" />
+					</p:commandButton>
 				</p:column>
 			</p:dataTable>
 		</div>
 
 		<h:form id="dialogs">
-			<p:dialog header="User Details" showEffect="fade" modal="true" widgetVar="manageUserDialog" responsive="true">
+			<p:dialog header="User Details" showEffect="fade" modal="true" widgetVar="manageUserDialog" responsive="true" width="800" height="400">
 				<p:outputPanel id="manage-user-content" class="ui-fluid">
-					<p:outputPanel rendered="#{not empty userBean.selectedUser}">
-					<br/>
-					<div class="field">
-						<div class="ui-float-label"> 
-							<p:inputText id="float-input-id" value="#{userBean.selectedUser.id}" /> 
-							<p:outputLabel for="@previous" value="ID" />
-						</div>
-					</div>
-					<br/>
-					<div class="formgrid grid">
-                        <div class="field col">
-							<div class="ui-float-label"> 
-				    			<p:inputText id="float-input-firstname" value="#{userBean.selectedUser.firstName}" />
-				    			<p:outputLabel for="@previous" value="FirstName" />
-							</div>
-						</div>
-						<div class="field col">
-							<div class="ui-float-label"> 
-				    			<p:inputText id="float-input-lastname" value="#{userBean.selectedUser.lastName}" />
-				    			<p:outputLabel for="@previous" value="LastName" />
-							</div>
-						</div>
-					</div>
-					</p:outputPanel>
+						<p:outputPanel rendered="#{not empty userBean.selectedUser}">
+                            <div class="field">
+                                <p:outputLabel for="firstName">FirstName</p:outputLabel>
+                                <p:inputText id="firstName" value="#{userBean.selectedUser.firstName}" required="true" />
+                            </div>
+                            <div class="field">
+                                <p:outputLabel for="lastName">LastName</p:outputLabel>
+                                <p:inputTextarea id="lastName" value="#{userBean.selectedUser.lastName}" />
+                            </div>
+                            <div class="formgrid grid">
+                                <div class="field col">
+                                    <p:outputLabel for="email">Email</p:outputLabel>
+                                    <p:inputText id="email" value="#{userBean.selectedUser.email}"/>
+                                </div>
+                                <div class="field col">
+                                    <p:outputLabel for="dob">Date of Birthday</p:outputLabel>
+                                    <p:spinner id="dob" min="0" value="#{userBean.selectedUser.dob}" />
+                                </div>
+                            </div>
+						
+						</p:outputPanel>
 				</p:outputPanel>
 				<f:facet name="footer">
-                <p:commandButton value="Save" icon="pi pi-check" actionListener="#{userBean.saveUser}"
-                    update="manage-user-content" process="manage-user-content @this" />
-                <p:commandButton value="Cancel" icon="pi pi-times" onclick="PF('manageUserDialog').hide()"
-                    class="ui-button-secondary" type="button" />
-            </f:facet>
+					<p:commandButton value="Save" icon="pi pi-check" actionListener="#{userBean.saveUser}" update="manage-user-content" process="manage-user-content @this" />
+					<p:commandButton value="Cancel" icon="pi pi-times" onclick="PF('manageUserDialog').hide()" class="ui-button-secondary" type="button" />
+				</f:facet>
+
 			</p:dialog>
 
 		</h:form>
