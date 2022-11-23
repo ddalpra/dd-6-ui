@@ -9,17 +9,7 @@
 		<h:form>
 			<p:growl id="messages" showDetail="true" />
 			<p:slideMenu style="width:200px">
-				<p:submenu label="Options">
-					<p:menuitem value="Save (Non-Ajax)" action="#{menuView.save}"
-						update="messages" ajax="false" icon="pi pi-save" />
-					<p:menuitem value="Update" action="#{menuView.update}"
-						update="messages" icon="pi pi-refresh" />
-					<p:menuitem value="Delete" action="#{menuView.delete}"
-						update="messages" icon="pi pi-times" />
-				</p:submenu>
-				<p:submenu label="Navigations">
-					<p:menuitem value="Website" url="http://www.primefaces.org"
-						icon="pi pi-external-link" />
+				<p:submenu label="Application">
 					<p:menuitem value="User" outcome="/users.xhtml"
 						icon="pi pi-upload" />
 				</p:submenu>

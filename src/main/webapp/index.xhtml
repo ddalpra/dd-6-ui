@@ -1,62 +1,38 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
-<h:head>
-    <title>JSF Bootable Jar example</title>
-    <h:outputStylesheet library="css" name="styles.css"/>
-</h:head>
-<h:body>
-    <div class="main">
-        <h:form id="form">
-            <div>
-                <h:outputLabel value="Title: "/>
-                <h:inputText id="inputTitle" value="#{taskBean.title}"/>
-                <h:commandButton id="add" value="Add">
-                    <f:ajax execute="inputTitle" render="outputGroup" listener="#{taskBean.add}"/>
-                </h:commandButton>
-            </div>
-            <div>
-                <h:outputLabel value="Task Id: "/>
-                <h:inputText id="delTitle" value="#{taskBean.id}">
-                    <f:validateLongRange minimum="1" maximum="99"/>
-                </h:inputText>
-                <h:commandButton id="del" value="Delete">
-                    <f:ajax execute="delTitle" render="outputGroup" listener="#{taskBean.delete}"/>
-                </h:commandButton>
-            </div>
-            <div>
-                <h:outputLabel value="Task Id: "/>
-                <h:inputText id="updateId" value="#{taskBean.id}">
-                    <f:validateLongRange minimum="1" maximum="99"/>
-                </h:inputText>
-                <br/>
-                <h:outputLabel value="Title: "/>
-                <h:inputText id="updateTitle" value="#{taskBean.title}"/>
-                <h:commandButton id="update" value="Update">
-                    <f:ajax execute="updateId updateTitle" render="outputGroup"
-                            listener="#{taskBean.update}"/>
-                </h:commandButton>
-            </div>
-        </h:form>
+<ui:composition
+        xmlns:faces="jakarta.faces" xmlns:ui="jakarta.faces.facelets"
+	xmlns:f="jakarta.faces.core" xmlns:h="jakarta.faces.html"
+	xmlns:pt="jakarta.faces.passthrough" xmlns:cc="jakarta.faces.composite"
+	xmlns:my="jakarta.faces.component" xmlns:c="jakarta.tags.core"
+	xmlns:fn="jakarta.tags.functions"
+	template="/WEB-INF/jsf-templates/layout.xhtml">
 
-        <h:panelGroup id="outputGroup" layout="block">
-            <h:dataTable id="taskTable" value="#{taskBean.allTasks}" var="row" title="Task List" styleClass="results">
-                <h:column>
-                    <f:facet name="header">ID</f:facet>
-                    #{row.id}
-                </h:column>
+    <ui:param name="title" value="Esempio"/>
 
-                <h:column>
-                    <f:facet name="header">Title</f:facet>
-                    #{row.title}
-                </h:column>
-            </h:dataTable>
+   <ui:define name="content">
+		<ul class="breadcrumb">
+			<li><a href="#">Home</a></li>
+			<li><a href="#">Pictures</a></li>
+			<li><a href="#">Summer 15</a></li>
+			<li>Italy</li>
+		</ul>
 
-            <h:messages id="messages"/>
-        </h:panelGroup>
-    </div>
-</h:body>
-</html>
+		<h:form id="formpanel" enctype="multipart/form-data">
+			<h:panelGrid columns="2" styleClass="default">
+				<h:inputFile id="inputfile" value="#{uploadBean.part}"
+					accept="image/jpeg,image/png,image/gif" />
+				<h:commandButton value="Upload" action="#{uploadBean.uploadFile}" />
+			</h:panelGrid>
+			<h:panelGrid columns="2" styleClass="default">
+				<h3>Read-Only input text box</h3>
+				<h:inputText value="#{uploadBean.nome}" />
+				<br />
+				<h:commandButton value="Hello" action="#{uploadBean.salvaNome}" />
+			</h:panelGrid>
+		</h:form>
+
+	</ui:define>
+
+
+</ui:composition>        
