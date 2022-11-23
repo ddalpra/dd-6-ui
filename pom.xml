@@ -17,6 +17,7 @@
 		<version.jakarta-api>10.0.0</version.jakarta-api>
 		<version.jakarta-bind-api>4.0.0</version.jakarta-bind-api>
 		<version.resteasy>6.2.1.Final</version.resteasy>
+		<version.primefaces>11.0.0</version.primefaces>
 		<plugin.fork.embedded>true</plugin.fork.embedded>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
@@ -51,6 +52,12 @@
 			<artifactId>resteasy-client</artifactId>
 			<version>${version.resteasy}</version>
 		</dependency>
+		<dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>${version.primefaces}</version>
+            <classifier>jakarta</classifier>
+        </dependency>
 	</dependencies>
 
 	<build>

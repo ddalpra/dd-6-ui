@@ -1,0 +1,29 @@
+<ui:composition xmlns:faces="jakarta.faces"
+	xmlns:ui="jakarta.faces.facelets" xmlns:f="jakarta.faces.core"
+	xmlns:h="jakarta.faces.html" xmlns:pt="jakarta.faces.passthrough"
+	xmlns:cc="jakarta.faces.composite" xmlns:my="jakarta.faces.component"
+	xmlns:c="jakarta.tags.core" xmlns:fn="jakarta.tags.functions"
+	xmlns:p="http://primefaces.org/ui">
+
+	<div class="sidebar">
+		<h:form>
+			<p:growl id="messages" showDetail="true" />
+			<p:slideMenu style="width:200px">
+				<p:submenu label="Options">
+					<p:menuitem value="Save (Non-Ajax)" action="#{menuView.save}"
+						update="messages" ajax="false" icon="pi pi-save" />
+					<p:menuitem value="Update" action="#{menuView.update}"
+						update="messages" icon="pi pi-refresh" />
+					<p:menuitem value="Delete" action="#{menuView.delete}"
+						update="messages" icon="pi pi-times" />
+				</p:submenu>
+				<p:submenu label="Navigations">
+					<p:menuitem value="Website" url="http://www.primefaces.org"
+						icon="pi pi-external-link" />
+					<p:menuitem value="User" outcome="/users.xhtml"
+						icon="pi pi-upload" />
+				</p:submenu>
+			</p:slideMenu>
+		</h:form>
+	</div>
+</ui:composition>

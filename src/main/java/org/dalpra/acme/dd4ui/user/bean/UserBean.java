@@ -24,6 +24,8 @@ public class UserBean implements Serializable {
 
 	private static final long serialVersionUID = 4537406924600704639L;
 	private List<User> userList;
+	private User selectedUser;
+	private List<User> selectedUsers;
 	@Inject
 	private User user;
 	private transient Client client;
@@ -64,6 +66,19 @@ public class UserBean implements Serializable {
 		this.user = user;
 	}
 
+	public List<User> getSelectedUsers() {
+		return selectedUsers;
+	}
 
+	public void setSelectedUsers(List<User> selectedUsers) {
+		this.selectedUsers = selectedUsers;
+	}
 
+	public User getSelectedUser() {
+		return selectedUser;
+	}
+
+	public void setSelectedUser(User selectedUser) {
+		this.selectedUser = selectedUser;
+	}
 }

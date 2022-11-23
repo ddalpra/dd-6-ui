@@ -1,41 +1,87 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
-<h:head>
-    <title>JSF Bootable Jar example</title>
-    <h:outputStylesheet library="css" name="styles.css"/>
-</h:head>
-<h:body>
-    <div class="main">
-    	<h:panelGroup id="outputGroup" layout="block">
-            <h:dataTable id="userTable" value="#{userBean.userList}" var="row" title="User List" styleClass="results">
-                <h:column>
-                    <f:facet name="header">ID</f:facet>
-                    #{row.id}
-                </h:column>
-                <h:column>
-                    <f:facet name="header">FirstName</f:facet>
-                    #{row.firstName}
-                </h:column>
-                <h:column>
-                    <f:facet name="header">LastName</f:facet>
-                    #{row.lastName}
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Dob</f:facet>
-                    #{row.dob}
-                </h:column>
-                <h:column>
-                    <f:facet name="header">Email</f:facet>
-                    #{row.email}
-                </h:column>
-            </h:dataTable>
+<ui:composition xmlns:faces="jakarta.faces"
+	xmlns:ui="jakarta.faces.facelets" xmlns:f="jakarta.faces.core"
+	xmlns:h="jakarta.faces.html" xmlns:pt="jakarta.faces.passthrough"
+	xmlns:cc="jakarta.faces.composite" xmlns:my="jakarta.faces.component"
+	xmlns:c="jakarta.tags.core" xmlns:fn="jakarta.tags.functions"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/jsf-templates/layout.xhtml">
 
-            <h:messages id="messages"/>
-        </h:panelGroup>
-    </div>
-</h:body>
-</html>
+
+	<ui:define name="content">
+
+
+		<div class="card">
+			<h5>Utenti</h5>
+			<p:dataTable var="user" value="#{userBean.userList}" size="large">
+				<p:column headerText="ID">
+					<h:outputText value="#{user.id}" />
+				</p:column>
+
+				<p:column headerText="FirstName">
+					<h:outputText value="#{user.firstName}" />
+				</p:column>
+
+				<p:column headerText="LastName">
+					<h:outputText value="#{user.lastName}" />
+				</p:column>
+
+				<p:column headerText="Email">
+					<h:outputText value="#{user.email}" />
+				</p:column>
+
+				<p:column headerText="Dob">
+					<h:outputText value="#{user.dob}" />
+				</p:column>
+				<p:column>
+					<p:commandButton icon="pi pi-pencil" update=":dialogs:manage-user-content"
+                    oncomplete="PF('manageUserDialog').show()"
+                    styleClass="edit-button rounded-button ui-button-success" process="@this">
+                    <f:setPropertyActionListener value="#{user}" target="#{userBean.selectedUser}" />
+                    <p:resetInput target=":dialogs:manage-user-content" />
+                </p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</div>
+
+		<h:form id="dialogs">
+			<p:dialog header="User Details" showEffect="fade" modal="true" widgetVar="manageUserDialog" responsive="true">
+				<p:outputPanel id="manage-user-content" class="ui-fluid">
+					<p:outputPanel rendered="#{not empty userBean.selectedUser}">
+					<br/>
+					<div class="field">
+						<div class="ui-float-label"> 
+							<p:inputText id="float-input-id" value="#{userBean.selectedUser.id}" /> 
+							<p:outputLabel for="@previous" value="ID" />
+						</div>
+					</div>
+					<br/>
+					<div class="formgrid grid">
+                        <div class="field col">
+							<div class="ui-float-label"> 
+				    			<p:inputText id="float-input-firstname" value="#{userBean.selectedUser.firstName}" />
+				    			<p:outputLabel for="@previous" value="FirstName" />
+							</div>
+						</div>
+						<div class="field col">
+							<div class="ui-float-label"> 
+				    			<p:inputText id="float-input-lastname" value="#{userBean.selectedUser.lastName}" />
+				    			<p:outputLabel for="@previous" value="LastName" />
+							</div>
+						</div>
+					</div>
+					</p:outputPanel>
+				</p:outputPanel>
+				<f:facet name="footer">
+                <p:commandButton value="Save" icon="pi pi-check" actionListener="#{userBean.saveUser}"
+                    update="manage-user-content" process="manage-user-content @this" />
+                <p:commandButton value="Cancel" icon="pi pi-times" onclick="PF('manageUserDialog').hide()"
+                    class="ui-button-secondary" type="button" />
+            </f:facet>
+			</p:dialog>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>
