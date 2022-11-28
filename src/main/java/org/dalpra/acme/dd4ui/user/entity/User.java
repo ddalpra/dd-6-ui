@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.dalpra.acme.dd4ui.base.EntityBase;
+import org.dalpra.acme.dd4ui.base.Validity;
 
 public class User extends EntityBase implements Serializable {
 	
@@ -14,6 +15,17 @@ public class User extends EntityBase implements Serializable {
 	private LocalDate dob;
 	private String email;
 	
+	public String getSeverity() {
+		String severity = "";
+		if(getValidity().equals(Validity.valid)) {
+			severity = "success";
+		} else if(getValidity().equals(Validity.annulled)) {
+			severity = "warning";
+		} else {
+			severity = "danger";
+		}
+		return severity;
+	}
 	public String getFirstName() {
 		return firstName;
 	}
@@ -40,8 +52,8 @@ public class User extends EntityBase implements Serializable {
 	}
 	
 	public User(LocalDateTime timestampCreation, LocalDateTime timestampUpdating, String userCreation,
-			String userUpdating, String firstName, String lastName, LocalDate dob, String email) {
-		super(timestampCreation, timestampUpdating, userCreation, userUpdating);
+			String userUpdating, Validity validity, String firstName, String lastName, LocalDate dob, String email) {
+		super(timestampCreation, timestampUpdating, userCreation, userUpdating, validity);
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dob = dob;

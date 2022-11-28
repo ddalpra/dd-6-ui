@@ -10,13 +10,15 @@ public class EntityBase {
 	private LocalDateTime timestampUpdating;
 	private String userCreation;
 	private String userUpdating;
+	private Validity validity;
 	
 	public EntityBase(LocalDateTime timestampCreation, LocalDateTime timestampUpdating, String userCreation,
-			String userUpdating) {
+			String userUpdating, Validity validity) {
 		this.timestampCreation = timestampCreation;
 		this.timestampUpdating = timestampUpdating;
 		this.userCreation = userCreation;
 		this.userUpdating = userUpdating;
+		this.validity = validity;
 	}
 
 	public EntityBase() {
@@ -61,5 +63,13 @@ public class EntityBase {
 
 	public void setUserUpdating(String userUpdating) {
 		this.userUpdating = userUpdating;
+	}
+	
+	public Validity getValidity() {
+		return validity;
+	}
+
+	public void setValidity(Validity validity) {
+		this.validity = validity;
 	}
 }
