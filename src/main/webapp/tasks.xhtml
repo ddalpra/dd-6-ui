@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:faces="jakarta.faces"
+	xmlns:ui="jakarta.faces.facelets" xmlns:f="jakarta.faces.core"
+	xmlns:h="jakarta.faces.html" xmlns:pt="jakarta.faces.passthrough"
+	xmlns:cc="jakarta.faces.composite" xmlns:my="jakarta.faces.component"
+	xmlns:c="jakarta.tags.core" xmlns:fn="jakarta.tags.functions"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/jsf-templates/layout.xhtml">
+
+
+	<ui:define name="content">
+
+
+		<div class="card">
+			<h5>Task</h5>
+			<p:dataTable id="taskTable" var="task" value="#{taskBean.taskList}" size="large">
+				<p:column headerText="ID">
+					<h:outputText value="#{task.id}" />
+				</p:column>
+
+				<p:column headerText="FirstName">
+					<h:outputText value="#{task.description}" />
+				</p:column>
+				
+				<p:column headerText="Validity">
+					<p:badge value="#{task.validity}" size="xlarge" severity="#{task.severity}"></p:badge>
+				</p:column>
+
+			</p:dataTable>
+		</div>
+
+		
+	</ui:define>
+</ui:composition>
