@@ -8,12 +8,12 @@
 	<div class="sidebar">
 		<h:form>
 			<p:growl id="messages" showDetail="true" />
-			<p:slideMenu style="width:200px">
+			<p:menu style="width:200px;" toggleable="true">
 				<p:submenu label="Application">
-					<p:menuitem value="User" outcome="/users.xhtml"
-						icon="pi pi-upload" />
+					<p:menuitem value="User" outcome="/users.xhtml" icon="pi pi-upload" />
+					<p:menuitem value="Task" outcome="/tasks.xhtml" icon="pi pi-comment	" />
 				</p:submenu>
-			</p:slideMenu>
+			</p:menu>
 		</h:form>
 	</div>
 </ui:composition>
