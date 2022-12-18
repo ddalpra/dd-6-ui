@@ -14,7 +14,7 @@ public class Task extends EntityBase implements Serializable {
 
 	private String description;
 	
-	private List<CommentTask> comments = new ArrayList<>();
+	private List<CommentTask> comments = new ArrayList<CommentTask>();
 
 	public String getDescription() {
 		return description;
@@ -54,4 +54,11 @@ public class Task extends EntityBase implements Serializable {
 	public Task() {
 	}
 	
+	@Override
+	public String toString() {
+		return "Task [description=" + description + ", comments=" + comments + ", id=" + getId()
+				+ ", getTimestampCreation()=" + getTimestampCreation() + ", getTimestampUpdating()="
+				+ getTimestampUpdating() + ", getUserCreation()=" + getUserCreation() + ", getUserUpdating()="
+				+ getUserUpdating() + "]";
+	}
 }
