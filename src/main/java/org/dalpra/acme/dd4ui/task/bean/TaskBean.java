@@ -66,7 +66,6 @@ public class TaskBean implements Serializable {
         {
             response = request.get();
             taskList =response.readEntity(new GenericType<List<Task>>(){});
-            System.out.println(taskList);
         }
         finally
         {
@@ -110,12 +109,11 @@ public class TaskBean implements Serializable {
 			
 			client = ((ResteasyClientBuilder) ClientBuilder.newBuilder()).build();
 			
-			target = client.target(BASE_URL);
-
 			
-			
-			System.out.println(selectedTask.getId());
 			if(selectedTask.getId()==null) {
+				
+				target = client.target(BASE_URL);
+				
 				selectedTask.setUserCreation("daniele");
 				selectedTask.setUserUpdating("daniele");
 				selectedTask.setTimestampCreation(LocalDateTime.now());
@@ -130,6 +128,16 @@ public class TaskBean implements Serializable {
 
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Task Added"));
 
+			}else {
+				selectedTask.setTimestampUpdating(LocalDateTime.now());
+				selectedTask.setUserUpdating("daniele");
+				System.out.println(selectedTask);
+				
+				
+				target = client.target(BASE_URL+"/"+selectedTask.getId());
+				
+				response = target.request().put(Entity.entity(selectedTask, "application/json"));
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Task Updated"));
 			}
 
 
