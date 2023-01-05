@@ -1,5 +1,5 @@
 # Specify the parent image from which we build
-FROM quay.io/quarkus/ubi-quarkus-native-image:22.3-java11
+FROM registry.access.redhat.com/ubi8/openjdk-17:1.14
 
 ENV LANGUAGE='en_US:en'
 
