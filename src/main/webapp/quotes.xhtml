@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:faces="jakarta.faces"
+	xmlns:ui="jakarta.faces.facelets" xmlns:f="jakarta.faces.core"
+	xmlns:h="jakarta.faces.html" xmlns:pt="jakarta.faces.passthrough"
+	xmlns:cc="jakarta.faces.composite" xmlns:my="jakarta.faces.component"
+	xmlns:c="jakarta.tags.core" xmlns:fn="jakarta.tags.functions"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/jsf-templates/layout.xhtml">
+
+
+
+	<ui:define name="content">
+
+
+		<h:form>
+			<h:panelGrid columns="2" styleClass="default">
+				<h3>Read-Only input text box</h3>
+				<br />
+				<h:commandButton value="Hello" action="#{quoteBean.sendMessage}" />
+			</h:panelGrid>
+		</h:form>
+
+	</ui:define>
+	
+	
+	
+</ui:composition>

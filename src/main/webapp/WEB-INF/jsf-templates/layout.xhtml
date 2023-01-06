@@ -8,6 +8,8 @@
 <h:head>
 	<title>JSF Basic demo</title>
 	<h:outputStylesheet library="css" name="ddalpra.css" />
+	<h:outputStylesheet library="css" name="patternfly.min.css"/>
+	<h:outputStylesheet library="css" name="patternfly-additions.min.css"/>
 	 <h:outputStylesheet name="css/primeflex2.css" library="showcase"/><!-- classic PrimeFlex 2 for backward-compatibility -->
         <h:outputStylesheet name="css/primeflex3.css" library="showcase"/><!-- latest primeflex -->
        <h:outputStylesheet name="css/layout/layout.css" library="showcase"/>
@@ -33,7 +35,25 @@
 		<p>Develop to Daniele Dal Prà</p>
 	</div>
 
+<h:outputScript library="js" name="jquery-3.6.0.min.js" />
 	<script>
+    $("#request-quote").click((event) => {
+        fetch("/quotes/request", {method: "POST"})
+        .then(res => res.text())
+        .then(qid => {
+            var row = $(`<h4 class='col-md-12' id='${qid}'>Quote # <i>${qid}</i> | <strong>Pending</strong></h4>`);
+            $(".quotes").prepend(row);
+        });
+    });
+
+    var source = new EventSource("/quotes");
+    source.onmessage = (event) => {
+      var json = JSON.parse(event.data);
+      $(`#${json.id}`).html((index, html) => {
+        return html.replace("Pending", `\$\xA0${json.price}`);
+      });
+    };
+    
 function myFunction() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
